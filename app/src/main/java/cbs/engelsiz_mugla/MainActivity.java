@@ -1,11 +1,13 @@
 package cbs.engelsiz_mugla;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.database.sqlite.SQLiteDatabase;
 import android.hardware.Camera;
 import android.os.Environment;
+import android.support.multidex.MultiDex;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,8 +26,6 @@ import java.util.Calendar;
 public class MainActivity extends AppCompatActivity implements SurfaceHolder.Callback{
 
     private Button btnShowLocation;
-    private TextView konumText;
-    private Tracker gps;
     private SurfaceView surfaceV;
     private SurfaceHolder surfaceH;
     private android.hardware.Camera cam;
@@ -34,7 +34,15 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
     private DBHelper dbh;
     private EditText textarea;
     private Button gonderButton;
+    public TextView konumText;
+    private Tracker gps;
 
+
+    @Override
+    protected void attachBaseContext(Context context) {
+        super.attachBaseContext(context);
+        MultiDex.install(this);
+    }
 
     private void init(){
         surfaceV =(SurfaceView)findViewById(R.id.sView);
@@ -173,7 +181,7 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
         });
 
 
-        konumText =(TextView)findViewById(R.id.text_konum);
+
         btnShowLocation = (Button) findViewById(R.id.buton_konum);
 
 
@@ -184,27 +192,12 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
                 Intent iMaps = new Intent(MainActivity.this, MapsActivity.class);
                 startActivity(iMaps);
 
-
-
-   /**
-                gps = new Tracker(MainActivity.this);
-                if (gps.canGetLocation()) {
-                    double latitude = gps.getLatitude();
-                    double longitude = gps.getLongitude();
-
-                    konumText.setText("Lat: " + latitude + "\nLong: "
-                            + longitude);
-    //                Toast.makeText(
-    //                        getApplicationContext(),
-    //                        "Your Location is -\nLat: " + latitude + "\nLong: "
-    //                                + longitude, Toast.LENGTH_LONG).show();
-                } else {
-                    gps.showSettingsAlert();
-                }
-    */
             }
         });
+
+
     }
+
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {

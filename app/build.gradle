@@ -2,10 +2,9 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.0"
+    buildToolsVersion '25.0.0'
 
     dexOptions {
-        incremental true
         javaMaxHeapSize "4g"
     }
     defaultConfig {
@@ -16,18 +15,25 @@ android {
         versionName "1.0"
         multiDexEnabled true
     }
+
+
     buildTypes {
-        release {18
+        release {
+            18
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    productFlavors {
+    }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile 'com.android.support:appcompat-v7:23.2.1'
+    compile 'com.google.firebase:firebase-messaging:9.6.1'
     compile 'com.google.android.gms:play-services:10.2.4'
+    compile 'com.android.support:multidex:1.0.0'
 }
 

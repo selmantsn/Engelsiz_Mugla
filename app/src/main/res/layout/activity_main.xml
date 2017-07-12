@@ -69,10 +69,10 @@
             android:weightSum="1">
 
             <Button
+                android:id="@+id/buton_konum"
                 android:layout_width="120dp"
                 android:layout_height="match_parent"
-                android:text="   Konum Al   "
-                android:id="@+id/buton_konum" />
+                android:text="   Konum Al   " />
 
             <TextView
                 android:layout_width="match_parent"
