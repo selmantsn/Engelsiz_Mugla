@@ -13,8 +13,8 @@ import android.widget.ImageView;
  * Created by Asus on 18.03.2017.
  */
 public class BlobAdapter extends BaseAdapter {
-    private Cursor cursor;
-    private Context context;
+    private Context context;    private Cursor cursor;
+
 
     public BlobAdapter(Context context, Cursor cursor){
         this.context = context;

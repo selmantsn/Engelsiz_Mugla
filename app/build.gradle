@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
+    compileSdkVersion 25
     buildToolsVersion '25.0.0'
 
     dexOptions {
@@ -30,10 +30,15 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.2.1'
+    compile 'com.android.support:appcompat-v7:25.0.0'
     compile 'com.google.firebase:firebase-messaging:9.6.1'
     compile 'com.google.android.gms:play-services:10.2.4'
     compile 'com.android.support:multidex:1.0.0'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:design:25.0.0'
+
+    compile 'com.github.karanchuri:PermissionManager:0.1.0'
 }
+
 

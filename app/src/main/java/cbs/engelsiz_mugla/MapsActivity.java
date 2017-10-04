@@ -21,6 +21,7 @@ import java.util.Map;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
+    public  static final int PERMISSIONS_MULTIPLE_REQUEST = 123;
 
     private GoogleMap mMap;
     public Button tButton;
@@ -103,13 +104,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
-        mMap.setMyLocationEnabled(true);
 
+        LatLng cbskonum = new LatLng(37.175781, 28.373504);
+        mMap.addMarker(new MarkerOptions().position(cbskonum).title("Coğrafi Bilgi Sistemleri"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(cbskonum, 18));
+        mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+        mMap.setMyLocationEnabled(true);
      /**
         // Add a marker in Sydney and move the camera
         LatLng myLatLng = new LatLng(mMap.getMyLocation().getLatitude(), mMap.getMyLocation().getLongitude());
         mMap.addMarker(new MarkerOptions().position(myLatLng).title("Your are here now!!"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(myLatLng));
+
 */
         mMap.setOnMyLocationChangeListener(myLocationChangeListener);
 
